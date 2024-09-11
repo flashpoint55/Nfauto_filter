@@ -38,7 +38,7 @@ async def Lazy_start():
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
 
-    # Start the bot and ensure it's awaited
+    # Start the bot
     await LazyPrincessBot.start()
 
     bot_info = await LazyPrincessBot.get_me()
@@ -77,11 +77,8 @@ async def Lazy_start():
 
 if __name__ == '__main__':
     try:
-        # Create a new event loop and set it as current
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        
-        # Run the Lazy_start coroutine
+        # Use default event loop
+        loop = asyncio.get_event_loop()
         loop.run_until_complete(Lazy_start())
         logging.info('-----------------------🧐 Service running in Lazy Mode 😴-----------------------')
     except KeyboardInterrupt:
