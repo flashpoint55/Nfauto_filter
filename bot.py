@@ -1,13 +1,22 @@
 import logging
 import logging.config
-# Credit @LazyDeveloper.
-# Please Don't remove credit.
-# Born to make history @LazyDeveloper !
-# Thank you LazyDeveloper for helping us in this Journey
-# 🥰  Thank you for giving me credit @LazyDeveloperr  🥰
-# for any error please contact me -> telegram@LazyDeveloperr or insta @LazyDeveloperr 
-# rip paid developers 🤣 - >> No need to buy paid source code while @LazyDeveloperr is here 😍😍
-# Get logging configurations
+import os
+import asyncio
+from pyrogram import Client, __version__
+from pyrogram.raw.all import layer
+from database.ia_filterdb import Media
+from database.users_chats_db import db
+from info import *
+from utils import temp
+from typing import Union, Optional, AsyncGenerator
+from pyrogram import types
+from aiohttp import web
+from plugins import web_server
+from lazybot import LazyPrincessBot
+from util.keepalive import ping_server
+from lazybot.clients import initialize_clients
+
+# Logging configuration
 logging.config.fileConfig('logging.conf')
 logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
@@ -20,34 +29,18 @@ logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-import os
-from pyrogram import Client, __version__
-from pyrogram.raw.all import layer
-from database.ia_filterdb import Media
-from database.users_chats_db import db
-from info import *
-from utils import temp
-from typing import Union, Optional, AsyncGenerator
-from pyrogram import types
-from aiohttp import web
-from plugins import web_server
-
-import asyncio
-from pyrogram import idle
-from lazybot import LazyPrincessBot
-
-from util.keepalive import ping_server
-from lazybot.clients import initialize_clients
-
-
 PORT = "8000"
-LazyPrincessBot.start()
-loop = asyncio.get_event_loop()
 
+# Start bot
+LazyPrincessBot.start()
+
+# Create a new event loop
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
 
 async def Lazy_start():
     print('\n')
-    print(' Initalizing Telegram Bot ')
+    print('Initalizing Telegram Bot')
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
     bot_info = await LazyPrincessBot.get_me()
@@ -55,7 +48,7 @@ async def Lazy_start():
     await initialize_clients()
     if ON_HEROKU:
         asyncio.create_task(ping_server())
-    b_users, b_chats , lz_verified = await db.get_banned()
+    b_users, b_chats, lz_verified = await db.get_banned()
     temp.BANNED_USERS = b_users
     temp.BANNED_CHATS = b_chats
     temp.LAZY_VERIFIED_CHATS = lz_verified
