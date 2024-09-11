@@ -48,7 +48,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002183671823))
 LAZY_GROUP_LOGS = int(environ.get('LAZY_GROUP_LOGS', -1002155777503))
 REQ_CHANNEL = int(environ.get('REQ_CHANNEL','-1002195111570'))
-PRIME_MEMBERS_LOGS = int(environ.get('PRIME_MEMBERS_LOGS'))
+PRIME_MEMBERS_LOGS = int(environ.get('PRIME_MEMBERS_LOGS','-1002183671823'))
 
 # PREMIUM ACCESS *
 lazydownloaders = [int(lazydownloaders) if id_pattern.search(lazydownloaders) else lazydownloaders for lazydownloaders in environ.get('PRIME_DOWNLOADERS', '').split()]
