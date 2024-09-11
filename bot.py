@@ -48,10 +48,15 @@ async def Lazy_start():
     if ON_HEROKU:
         asyncio.create_task(ping_server())
 
-    b_users, b_chats, lz_verified = await db.get_banned()
-    temp.BANNED_USERS = b_users
-    temp.BANNED_CHATS = b_chats
-    temp.LAZY_VERIFIED_CHATS = lz_verified
+    try:
+        b_users, b_chats, lz_verified = await db.get_banned()
+        temp.BANNED_USERS = b_users
+        temp.BANNED_CHATS = b_chats
+        temp.LAZY_VERIFIED_CHATS = lz_verified
+    except Exception as e:
+        logging.error(f"Error getting banned data: {e}")
+        raise
+
     await Media.ensure_indexes()
 
     me = await LazyPrincessBot.get_me()
@@ -81,3 +86,5 @@ if __name__ == '__main__':
         logging.info('-----------------------🧐 Service running in Lazy Mode 😴-----------------------')
     except KeyboardInterrupt:
         logging.info('-----------------------😜 Service Stopped Sweetheart 😝-----------------------')
+    except Exception as e:
+        logging.error(f"Unhandled exception: {e}")
