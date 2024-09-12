@@ -2,7 +2,7 @@ import logging
 import logging.config
 import os
 import asyncio
-from pyrogram import Client, __version__
+from pyrogram import Client, __version__, idle  # Import idle here
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
@@ -73,11 +73,10 @@ async def Lazy_start():
 
     logging.info(f"{me.first_name} with Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
     logging.info(LOG_STR)
-    await idle()
+    await idle()  # Keep the bot running here
 
 if __name__ == '__main__':
     try:
-        # Use default event loop
         loop = asyncio.get_event_loop()
         loop.run_until_complete(Lazy_start())
         logging.info('-----------------------🧐 Service running in Lazy Mode 😴-----------------------')
