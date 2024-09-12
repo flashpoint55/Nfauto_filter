@@ -1762,7 +1762,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         settings = await get_settings(query.message.chat.id)
         try:
             if settings['url_mode'] and not await db.has_prime_status(user):
-                ghost_url = await get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
+                ghost_url = await get_shortlink(link=f"https://telegram.me/{temp.U_NAME}?start=allfiles_{key}")
                 await query.answer(url=ghost_url)
                 return
             else:
