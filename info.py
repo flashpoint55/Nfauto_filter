@@ -19,9 +19,9 @@ def is_enabled(value, default):
 
 # Bot information *
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
+API_ID = int(environ['23378704'])
+API_HASH = environ['15a02b4d02babeb79e8f328b0ead0c17']
+BOT_TOKEN = environ['7872685474:AAEG1BlI_bPkxt72c5Y3ylWiDx3vHfyAIHA']
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -30,8 +30,8 @@ PICS = (environ.get('PICS', 'https://telegra.ph/file/7e56d907542396289fee4.jpg h
 PRIME_LOGO = (environ.get('PRIME_LOGO', 'https://telegra.ph/file/ca18e2c794f4ea1c3135b.jpg'))
 
 # Admins, Channels & Users *
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6174868004').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '23378704').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002277927856').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
@@ -40,15 +40,15 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information *
-DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://uusus1620:J7yDeR98Su3qh9Ri@cluster0.kmy2r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = environ.get('DATABASE_NAME', "LazyDeveloper")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # LOG CHANNELS *
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002183671823'))
-LAZY_GROUP_LOGS = int(environ.get('LAZY_GROUP_LOGS', '-1002155777503'))
-REQ_CHANNEL = int(environ.get('REQ_CHANNEL','-1002195111570'))
-PRIME_MEMBERS_LOGS = int(environ.get('PRIME_MEMBERS_LOGS','-1002183671823'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002445234549'))
+LAZY_GROUP_LOGS = int(environ.get('LAZY_GROUP_LOGS', '-1002476191865'))
+REQ_CHANNEL = int(environ.get('REQ_CHANNEL','-1002445234549'))
+PRIME_MEMBERS_LOGS = int(environ.get('PRIME_MEMBERS_LOGS','-1002445234549'))
 
 # PREMIUM ACCESS *
 lazydownloaders = [int(lazydownloaders) if id_pattern.search(lazydownloaders) else lazydownloaders for lazydownloaders in environ.get('PRIME_DOWNLOADERS', '').split()]
@@ -74,7 +74,7 @@ LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False")
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
-FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1002208295766')).split()]
+FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1002319221632')).split()]
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "True")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "False")), False)
@@ -85,10 +85,10 @@ LAZY_MODE = bool(environ.get("LAZY_MODE")) #make it true to enable file renaming
 
 # Requested Content template variables --- 
 ADMIN_USRNM = environ.get('ADMIN_USRNM','CoderRzps') # WITHOUT @
-MAIN_CHANNEL_USRNM = environ.get('MAIN_CHANNEL_USRNM','+Ie4mNf6lL5RjYjM1') # WITHOUT @
+MAIN_CHANNEL_USRNM = environ.get('MAIN_CHANNEL_USRNM','@avengerdoomsday1') # WITHOUT @
 DEV_CHANNEL_USRNM = environ.get('DEV_CHANNEL_USRNM','LazyDeveloper') # WITHOUT @
 LAZY_YT_HANDLE = environ.get('LAZY_YT_HANDLE','+Ie4mNf6lL5RjYjM1')  # WITHOUT @ [  add only handle - don't add full url  ] 
-MOVIE_GROUP_USERNAME = environ.get('MOVIE_GROUP_USERNAME', "n_flixmovie") #[ without @ ]
+MOVIE_GROUP_USERNAME = environ.get('MOVIE_GROUP_USERNAME', "requestmoviesgroup0") #[ without @ ]
 
 # Url Shortner
 URL_MODE = is_enabled((environ.get("URL_MODE","True")), True) # make it true to enable url shortner in groups or pm
@@ -129,7 +129,7 @@ if HAS_SSL:
     URL = "https://{}/".format(FQDN)
 else:
     URL = "http://{}/".format(FQDN)
-BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001987654567")).split())) 
+BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1002368912229")).split())) 
 OWNER_USERNAME = "CoderRzps"
 
 lazydownloaders = [int(lazydownloaders) if id_pattern.search(lazydownloaders) else lazydownloaders for lazydownloaders in environ.get('PRIME_DOWNLOADERS', '').split()]
